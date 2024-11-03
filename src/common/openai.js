@@ -2,17 +2,17 @@ export const openai = {
 
     create_prompt(preferences, specials) {
 
-        let prompt = 'You are the restaurant manager of a restaurant called "The British Pantry" within a hotel called "The Grand Britannia". You are writing a message to a guest asking if they would like to join you for dinner in your restaurant that is conveniently located within the hotel building. Your restaurant is casual so you can address the guest casually. Your name is Nick. It is currently lunch time and you are asking about this evening\'s dinner';
+        let prompt = 'You are the restaurant manager of a restaurant called "The British Pantry" within a hotel called "The Grand Britannia". You are writing a short message to a guest asking if they would like to join you for dinner in your restaurant that is conveniently located within the hotel building. Your restaurant is casual so you can address the guest casually. Your name is Nick. It is currently lunch time and you are asking about this evening\'s dinner';
 
         prompt += '\n\nYour specials for tonight include:';
         prompt += '\n' + specials;
-        prompt += '\n\nAn a la carte menu is also available.';
+        prompt += '\n\nAn a la carte menu is also available including standard options like burgers, pizza etc.';
 
         prompt += '\nGuest name';
         prompt += '\nFirst name:' + preferences.service.contact.name_f;
         prompt += '\nSurname name:' + preferences.service.contact.name_s;
 
-        prompt += '\n\nDescribe specials that match the guests requirements. DO NOT suggest specials that are not suitable. DO mention that you have considered their preferences. DO not mention their preferences except within the context of a special dish suggestion';
+        prompt += '\n\nDescribe specials that match the guests requirements. DO NOT suggest specials that are not suitable. DO mention that you have considered their preferences. DO not mention their preferences except within the context of a special dish suggestion. Address the guest individually rather collectively e.g don\'t say "for meat lovers"';
 
         // Food
         let eat_personalisation = "";
@@ -85,6 +85,14 @@ export const openai = {
         // Adding to the JavaScript prompt
         prompt += '\n\nDescribe specials that match the guests requirements. DO NOT suggest specials that are not suitable. DO mention that you have considered their preferences.';
         prompt += personalisation;
+
+        if (preferences.service.food.food_will) {
+            prompt += `\n\n${preferences.service.contact.name_f} likes to eat (only use for inspiration for similar dishes rather than a high priority request for this in particular): \n${preferences.service.food.food_will.en}`;
+        }
+
+        if (preferences.service.food.food_wont) {
+            prompt += `\n\n${preferences.service.contact.name_f} will not eat: \n${preferences.service.food.food_wont.en}`;
+        }
 
         // More advanced applications we could consider budget, accessibility (wheelchair) etc
 
