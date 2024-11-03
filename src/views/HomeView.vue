@@ -67,7 +67,7 @@
       <template v-else-if="message && message_status === 'notsent'">
 
         <h3>Personalised message for the guest</h3>
-        <pre style="text-align:left" v-if="message">{{message}}</pre>
+        <p style="text-align:left; white-space:pre-wrap" v-if="message">{{message}}</p>
 
         <button @click="send_message" v-if="message">Send it! (DIDComm)</button>
 
