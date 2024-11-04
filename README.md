@@ -7,12 +7,17 @@ This hack shows:
 * A hotel with a DID (issued by TBD), a consumer with a DID (issued by Autoura.me)
 * Hotel restaurant has a list of specials
 * Hotel is able to access guest's food preferences (using a DID authenticated API endpoint)
-* A message is created that is personalised based on the guest's actual requirements
+* A message is created that is personalised based on the guest's actual requirements (using OpenAI)
 * Finally, the message is sent to the guest via DIDComm
+
+Video of this hack in action:
+https://www.youtube.com/watch?v=KOSa9iqPRzY
 
 ### Make it work
 
 Create a .env file and include VUE_APP_OPENAI= with your OpenAI API key.
+
+No TBD or Autoura.me registration / configuration required.
 
 #### Project setup
 ```
