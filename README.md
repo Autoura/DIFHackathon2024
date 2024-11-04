@@ -1,4 +1,4 @@
-# Hotel Restaraunt Demo
+# Hotel Restaurant Personalised Dining Offers Demo
 
 This simple hack was created as part of the 2024 DIF Hackathon https://difhackathon2024.devpost.com/
 
